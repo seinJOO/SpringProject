@@ -8,7 +8,7 @@
 <h1>
 	Hello world!  
 </h1>
-
+<!-- HomeController에서 model.addAttribute 해준 serverTime값을 사용 -->
 <P>  The time on the server is ${serverTime}. </P>
 </body>
 </html>
