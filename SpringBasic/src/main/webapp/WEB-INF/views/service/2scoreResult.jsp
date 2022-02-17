@@ -7,8 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h2>회원 가입 성공!</h2>
-	<a href="member_ex00">회원가입</a>
-	<a href="member_ex03">로그인</a>	<!-- 컨트롤러에서 화면 구현 -->
+	<h2>점수 등록 완료</h2>
+	<a href="1scoreRegister">점수 등록하러 가기</a>
+	<a href="3scoreList">등록 결과 보러가기</a>	<!-- 뷰로 이동 -->
 </body>
 </html>
