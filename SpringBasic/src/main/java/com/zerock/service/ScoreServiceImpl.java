@@ -13,7 +13,8 @@ import com.zerock.command.ScoreVO;
  	이름을 지정하지 않아도 잘 동작한다~~!! */
 // 2) @Repository("ScoreService") - DB와 관련된 클래스와 주로 씀
 // 3) @Service("ScoreService") - 해당 클래스를 컨테이너에 빈으로 생성하겠다는 어노테이션
-@Component	// 어노테이션으로 스캔을 하는 방법!
+// *) @Componentscan - 클래스 안에서 컴포넌트로 스캔을 할 수 있다
+@Component
 public class ScoreServiceImpl implements ScoreService {
 	
 	ArrayList<ScoreVO> list = new ArrayList<ScoreVO>(); 
