@@ -4,5 +4,22 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-		
+	<!-- root-context.xml에는 일반적으로 DB 관련 설정이 들어감! 모든 컴포넌트에 이 설정이 적용되어야 하기 때문임 !! -->
+	<!-- 기본적으로 classpath에 경로를 WEB-INF 아래의 classes 폴더 경로를 잡도록 설정이 되어있음 => DB 설정 파일을 작성한다면, classes 폴더 경로를 기준으로 경로 설정 -->
+	
+	<!-- hikariCP 빈으로 등록하기 -->
+	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521/XEPDB1" />
+		<property name="username" value="myjsp" />
+		<property name="password" value="myjsp" />
+	</bean>
+	
+	<!-- DataSource 설정 -->
+	<bean id="ds" class="com.zaxxer.hikari.HikariDataSource">
+		<constructor-arg ref="hikariConfig"></constructor-arg>
+	</bean>
+	
+	<!-- JDBC 템플릿 설정 -->
+	
 </beans>

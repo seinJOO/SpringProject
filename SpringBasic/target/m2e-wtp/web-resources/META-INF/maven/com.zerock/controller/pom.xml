@@ -90,13 +90,21 @@
          <version>1</version>
       </dependency>
             
-      <!-- Servlet -->
-      <dependency>
+      <!-- Servlet 기본 설정은 2.5버전이지만, 서블릿은 3.0 이상을 사용하는 것이 좋다!
+      		이름은 javax.servlet-api 버전 설정은 3.1.0!-->
+      <!-- <dependency>
          <groupId>javax.servlet</groupId>
          <artifactId>servlet-api</artifactId>
          <version>2.5</version>
          <scope>provided</scope>
+      </dependency> -->
+      <dependency>
+         <groupId>javax.servlet</groupId>
+         <artifactId>javax.servlet-api</artifactId>
+         <version>3.1.0</version>
+         <scope>provided</scope>
       </dependency>
+      
       <dependency>
          <groupId>javax.servlet.jsp</groupId>
          <artifactId>jsp-api</artifactId>
@@ -108,6 +116,38 @@
          <artifactId>jstl</artifactId>
          <version>1.2</version>
       </dependency>
+      
+      <!-- JDBC - oracle 설치 -->
+      <!-- https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc8 -->
+	<dependency>
+	    <groupId>com.oracle.database.jdbc</groupId>
+	    <artifactId>ojdbc8</artifactId>
+	    <version>18.3.0.0</version>
+	</dependency>
+	<!-- JDBC templete 사용을 위한 라이브러리 추가 -->
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-jdbc</artifactId>
+		<version>${org.springframework-version}</version>
+	</dependency>
+	
+	
+	<!-- 히카리 Connection Pool -->
+	<!-- https://mvnrepository.com/artifact/hikari-cp/hikari-cp -->
+	<dependency>
+	    <groupId>com.zaxxer</groupId>
+	    <artifactId>HikariCP</artifactId>
+	    <version>2.7.4</version>
+	</dependency>
+	
+	<!-- 스프링 테스트를 위한 추가 -->
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-test</artifactId>
+		<version>5.0.7.RELEASE</version>
+		<scope>test</scope>
+	</dependency>
+      
    
       <!-- Test -->
       <dependency>
@@ -116,7 +156,9 @@
          <version>4.7</version>
          <scope>test</scope>
       </dependency>        
-   </dependencies>
+ </dependencies>
+ 
+ 
     <build>
         <plugins>
             <plugin>

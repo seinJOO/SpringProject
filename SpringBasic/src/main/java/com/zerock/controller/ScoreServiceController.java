@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.zerock.command.ScoreVO;
+import com.zerock.dao.ScoreDAO;
 import com.zerock.service.ScoreService;
 import com.zerock.service.ScoreServiceImpl;
 
@@ -24,9 +25,11 @@ public class ScoreServiceController {
 		2) servlet-context에 설정하여 자동 주입
 			@Resource(name="ScoreService")
 			ScoreService scoreService;	/	<beans:bean id="ScoreService" class="com.zerock.service.ScoreServiceImpl"></beans:bean>
-		3) 어노테이션(repository + resource)를 이용한 자동 주입	*/
+		3) 어노테이션을 이용한 자동 주입			*/
+	
 			@Autowired
 			ScoreService scoreService;
+	
 	
 	// 화면처리 - 점수 등록 화면으로
 	@RequestMapping("/1scoreRegister")
