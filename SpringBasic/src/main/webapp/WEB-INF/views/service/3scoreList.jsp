@@ -17,7 +17,7 @@
 		국어 : ${good.kor }<br>
 		영어 : ${good.eng }<br>
 		수학 : ${good.math }<br>
-		<input type="button" value="삭제" onclick="location.href='scoreDelete?num=${num.index}'"><br>
+		<input type="button" value="삭제" onclick="location.href='scoreDelete?num=${good.num}'"><br>
 		<hr>
 	</c:forEach>
 	<br>

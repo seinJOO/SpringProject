@@ -2,6 +2,7 @@ package com.zerock.controller;
 
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +17,10 @@ import com.zerock.service.BoardServiceImpl;
 public class BoardServiceController {
 	
 	// 1) 직접 객체 생성하여 연결하기 -- new BoardService 객체 생성
-		BoardService boardService = new BoardServiceImpl();
+		//BoardService boardService = new BoardServiceImpl();
+	// 2) 
+		@Autowired
+		BoardService boardService;
 	
 	// 화면처리 - 게시판 등록
 	@RequestMapping("/boardRegister")

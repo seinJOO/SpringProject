@@ -12,5 +12,6 @@
 <P>  The time on the server is ${serverTime}. </P>
 <a href="service/member_ex00">member</a>
 <a href="service/boardRegister">board</a>
+<a href="service/1scoreRegister">score</a>
 </body>
 </html>

@@ -2,13 +2,19 @@ package com.zerock.service;
 
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.zerock.command.BoardVO;
 import com.zerock.dao.BoardDAO;
 import com.zerock.dao.BoardDAOImpl;
 
+
+@Service("boardService")
 public class BoardServiceImpl implements BoardService {
 	
-	BoardDAO boardDAO = new BoardDAOImpl();	
+	@Autowired
+	BoardDAO boardDAO;
 
 	@Override
 	public void register(String name, String title, String content) {

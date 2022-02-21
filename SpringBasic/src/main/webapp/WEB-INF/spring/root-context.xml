@@ -9,17 +9,21 @@
 	
 	<!-- hikariCP 빈으로 등록하기 -->
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
-		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="driverClassName" value="oracle.jdbc.OracleDriver" />
 		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521/XEPDB1" />
 		<property name="username" value="myjsp" />
 		<property name="password" value="myjsp" />
 	</bean>
 	
 	<!-- DataSource 설정 -->
-	<bean id="ds" class="com.zaxxer.hikari.HikariDataSource">
+	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource">
 		<constructor-arg ref="hikariConfig"></constructor-arg>
 	</bean>
 	
-	<!-- JDBC 템플릿 설정 -->
+	<!-- JDBC 템플릿 설정 - JDBC 템플릿 사용을 위한 bean 추가-->
+	<!-- jdbcTemplate 이름으로 객체를 생성하면서, hikariCP설정으로 생성된 ds를 의존주입하여 강제로 사용하도록 처리한다 -->
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+	<property name="dataSource" ref="dataSource"></property> <!-- jdbcTemplate으로 객체를 생성할 때 인자값으로 id="ds"인 bean의 인자값을 넘겨준다 -->
+	</bean>
 	
 </beans>

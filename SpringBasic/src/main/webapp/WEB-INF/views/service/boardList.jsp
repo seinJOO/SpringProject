@@ -19,7 +19,7 @@
 	</tr>
 	<c:forEach var="list" items="${boardList }" varStatus="num">
 	<tr>
-	<td>${list.num }</td>
+	<td>${num.index + 1 }</td>
 	<td>${list.name }</td>
 	<td>${list.title }</td>
 	<td><input type="button" value="삭제" onclick="location.href='boardDelete?num=${list.num}'"></td>
