@@ -48,13 +48,13 @@ public class ScoreServiceImpl implements ScoreService {
 	public void scoreRegist(ScoreVO vo) {		
 		mapper.insert(vo);
 		
-		/*
+		
 		Map<String, String> map = new HashMap<String, String>();
-		map.put("s1", vo.getName());
-		map.put("s2", vo.getKor());
-		map.put("s3", vo.getEng());
-		map.put("s4", vo.getMath());
-		*/
+		map.put("name", vo.getName());
+		map.put("kor", vo.getKor());
+		map.put("eng", vo.getEng());
+		map.put("math", vo.getMath());
+		//mapper.insert2(map);
 									//scoreDAO.scoreInsert(vo);
 	}
 

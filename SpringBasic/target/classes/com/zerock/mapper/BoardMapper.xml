@@ -10,8 +10,7 @@
 		  여러 값을 전달하고 싶은 경우에는 커맨드 객체 사용 또는 parameterType 속성에 Map을 지정 -->
 	
 	<insert id="insert">
-		<!-- INSERT INTO board01(name, title, content) VALUES(#{name}, #{title}, #{content}) -->
-		INSERT INTO board01(name, title, content) VALUES(#{p1}, #{p2}, #{p3})
+		INSERT INTO board01(name, title, content) VALUES(#{name}, #{title}, #{content})
 	</insert>
 	
 	<!-- resultType 속성 값은 select의 결과를 특정 객체로 만들어서 반환함 -->

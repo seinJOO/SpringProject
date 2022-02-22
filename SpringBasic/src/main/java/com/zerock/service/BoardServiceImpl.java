@@ -27,9 +27,9 @@ public class BoardServiceImpl implements BoardService {
 */
 		//2) Map 타입으로 이용 - 여러개의 값을 전달할 때 사용한 key값이 마이바티스 전달에 사용될 값이 된다
 		Map<String, String> map = new HashMap<String, String>();
-		map.put("p1", name);
-		map.put("p2", title);
-		map.put("p3", content);
+		map.put("name", name);
+		map.put("title", title);
+		map.put("content", content);
 		
 		mapper.insert(map);
 		

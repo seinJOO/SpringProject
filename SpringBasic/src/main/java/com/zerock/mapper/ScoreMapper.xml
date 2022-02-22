@@ -7,9 +7,6 @@
 	<insert id="insert">
 		INSERT INTO score01(name, kor, eng, math) VALUES (#{name}, #{kor}, #{eng}, #{math})
 	</insert>
-	<insert id="insert2">
-		INSERT INTO score01(name, kor, eng, math) VALUES (#{s1}, #{s2}, #{s3}, #{s4})
-	</insert>
 	<select id="select" resultType="com.zerock.command.ScoreVO">
 		SELECT * FROM score01 ORDER BY num
 	</select>
