@@ -12,11 +12,11 @@
 	<!-- 현재 for문에 index를 알 수 있는 변수 num -->
 	<h2>점수 등록 결과</h2>
 	<c:forEach var="good" items="${scoreList }" varStatus="num">
-		번호 : ${num.index + 1 }<br>
-		이름 : ${good.name }<br>
-		국어 : ${good.kor }<br>
-		영어 : ${good.eng }<br>
-		수학 : ${good.math }<br>
+		번호 : ${num.index + 1 }
+		이름 : ${good.name }
+		국어 : ${good.kor }
+		영어 : ${good.eng }
+		수학 : ${good.math }
 		<input type="button" value="삭제" onclick="location.href='scoreDelete?num=${good.num}'"><br>
 		<hr>
 	</c:forEach>

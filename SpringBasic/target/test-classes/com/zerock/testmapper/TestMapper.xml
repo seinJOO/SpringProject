@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 마이바티스 연결을 위한 매퍼 넣어주기 !!! -->	
+<!-- 위 설정을 추가 -->
+
+<!-- insert, select, update, delete 등의 조작어가 태그로 존재함 -->
+
+<mapper namespace="com.zerock.testmapper.TestMapper"> <!-- 추상메서드(인터페이스) 지정(완전 중요!!) -->
+	<select id="getTime" resultType="String">	<!-- 구분자(인터페이스의 메서드명) 및 반환값 자료형 지정 -->
+		select SYSDATE from dual	<!-- 사용중인 DB 및 버전에 맞는 sql구문을 넣기 - 지정하기 전 미리 체크 필수! -->
+	</select>
+	<select id="select" resultType="com.zerock.command.ScoreVO"> <!-- 반환값형태는 해당 클래스로 지정가능 -->
+		select * from score01 order by num
+	</select>
+	<insert id="insert">
+		INSERT INTO score01(name, kor, eng, math) VALUES(#{name}, #{kor}, #{eng}, #{math})
+		<!-- 입력값을 scoreVO로 받아서 넣을 것이기 때문에, 입력할 값에는 scoreVO의 멤버변수 이름을 설정한다  
+			 HashMap 자료형으로 입력값을 받아서 넣을 경우, 입력할 값에는 key값을 설정한다 -->
+	</insert>
+	<insert id="insert2">
+		INSERT INTO score01(name, kor, eng, math) VALUES(#{p1}, #{p2}, #{p3}, #{p4})
+	</insert>
+	
+</mapper>

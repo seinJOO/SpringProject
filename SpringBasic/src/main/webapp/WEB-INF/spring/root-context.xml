@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<!-- root-context.xml에는 일반적으로 DB 관련 설정이 들어감! 모든 컴포넌트에 이 설정이 적용되어야 하기 때문임 !! -->
@@ -16,14 +22,33 @@
 	</bean>
 	
 	<!-- DataSource 설정 -->
-	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource">
+	<bean id="ds" class="com.zaxxer.hikari.HikariDataSource">
 		<constructor-arg ref="hikariConfig"></constructor-arg>
 	</bean>
 	
 	<!-- JDBC 템플릿 설정 - JDBC 템플릿 사용을 위한 bean 추가-->
 	<!-- jdbcTemplate 이름으로 객체를 생성하면서, hikariCP설정으로 생성된 ds를 의존주입하여 강제로 사용하도록 처리한다 -->
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-	<property name="dataSource" ref="dataSource"></property> <!-- jdbcTemplate으로 객체를 생성할 때 인자값으로 id="ds"인 bean의 인자값을 넘겨준다 -->
+	<property name="dataSource" ref="ds"></property> <!-- jdbcTemplate으로 객체를 생성할 때 인자값으로 id="ds"인 bean의 인자값을 넘겨준다 -->
 	</bean>
+	
+	<!-- MyBatis 사용의 핵심 객체 SQLsessionFactory 추가 
+		- 세션 팩토리는 내부적으로 DB와 연결해주고, pstmt의 SQL문을 바인딩 처리(묶어놓기), 반복적인 close() 작업 또한 처리하여
+		    개발자의 코드량을 줄이며 효율적으로 작업을 할 수 있게 도와줌
+	
+	
+	-->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="ds"></property>
+		<property name="mapperLocations" value="classpath:com/zerock/mapper/**/*.xml"></property>
+		<!-- 위의 mapperLocation은 테스트매퍼와 경로가 충돌됨 -> JUnit테스트를 실행할 때는 주석처리 해준다!
+			  *** 아래 매퍼패키지 스캔 태그와 같은 의미임 -->
+	</bean>
+	
+	<!-- MyBatis의 테스트 매퍼 스캔 -->
+	<mybatis-spring:scan base-package="com.zerock.testmapper"/>
+	
+	<!-- MyBatis의 생성한 매퍼 패키지를 스캔하는 태그 -->
+	<mybatis-spring:scan base-package="com.zerock.mapper"/>
 	
 </beans>

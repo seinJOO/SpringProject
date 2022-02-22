@@ -15,13 +15,14 @@
 	<td>번호</td>
 	<td>작성자</td>
 	<td>제목</td>
-	<td>비고</td>
+	<td>내용</td>
 	</tr>
 	<c:forEach var="list" items="${boardList }" varStatus="num">
 	<tr>
 	<td>${num.index + 1 }</td>
 	<td>${list.name }</td>
 	<td>${list.title }</td>
+	<td>${list.content }</td>
 	<td><input type="button" value="삭제" onclick="location.href='boardDelete?num=${list.num}'"></td>
 	</tr>
 	</c:forEach>

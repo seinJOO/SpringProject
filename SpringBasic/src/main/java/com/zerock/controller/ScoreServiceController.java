@@ -50,6 +50,7 @@ public class ScoreServiceController {
 	public String scoreList(Model model) {
 		// 결과 반환 메서드
 		// 메서드의 파라미터에 model을 추가하여 model에 list를 저장하여 전달(화면에서 사용 가능하도록)		
+		//ArrayList<ScoreVO> scoreList = scoreService.scoreResult();
 		ArrayList<ScoreVO> scoreList = scoreService.scoreResult();
 		model.addAttribute("scoreList",scoreList);		
 		return "service/3scoreList";

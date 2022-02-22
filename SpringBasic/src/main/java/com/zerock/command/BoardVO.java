@@ -11,9 +11,8 @@ public class BoardVO {
 	
 	
 	
-	public BoardVO(int num, String name, String title, String content) {
+	public BoardVO(String name, String title, String content) {
 		super();
-		this.num = num;
 		this.name = name;
 		this.title = title;
 		this.content = content;

@@ -1,6 +1,8 @@
 package com.zerock.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.zerock.command.ScoreVO;
 import com.zerock.dao.ScoreDAO;
+import com.zerock.mapper.ScoreMapper;
 
 
 /*사실은... Component, Service, Repository 어노테이션의 기능은 같다!!
@@ -28,28 +31,45 @@ import com.zerock.dao.ScoreDAO;
 //3) component자동 의존성 주입 - Autowired를 사용할 때는 서비스 어노테이션을 통해 해당 로직이 서비스임을 명시해야함!!!!!!!
 @Service
 public class ScoreServiceImpl implements ScoreService {
+
+	
 	
 	// DAO를 사용하기	
 	// 1) 객체 생성을 통한 주입 : ScoreDAO scoreDAO = new ScoreDAOImpl();
 	// 2) bean객체 주입 : @Resource(name="ScoreDAO") private ScoreDAO scoreDAO;
-	// 3) 자동 의존성 주입
+	// 3) 자동 의존성 주입 : private ScoreDAO scoreDAO;
+	
+	// MyBatis
 	@Autowired
-	private ScoreDAO scoreDAO;
+		private ScoreMapper mapper;
+									
 	
 	@Override
 	public void scoreRegist(ScoreVO vo) {		
-		scoreDAO.scoreInsert(vo);
+		mapper.insert(vo);
+		
+		/*
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("s1", vo.getName());
+		map.put("s2", vo.getKor());
+		map.put("s3", vo.getEng());
+		map.put("s4", vo.getMath());
+		*/
+									//scoreDAO.scoreInsert(vo);
 	}
+
 	
 	@Override
 	public ArrayList<ScoreVO> scoreResult() {		
-		ArrayList<ScoreVO> DB = scoreDAO.scoreSelect();	// 점수 결과 메서드 호출		
-		return DB;
+		ArrayList<ScoreVO> list = mapper.select();
+									//ArrayList<ScoreVO> DB = scoreDAO.scoreSelect();	// 점수 결과 메서드 호출		
+		return list;
 	}
 	
 	@Override
 	public void scoreDelete(String num) {
-		scoreDAO.scoreDelete(num);
+		mapper.delete(num);
+									//scoreDAO.scoreDelete(num);
 	}
 	
 	
