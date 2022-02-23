@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	<!-- 
+	public void insertBoard(BoardVO vo);
+	public ArrayList<BoardVO> getList();
+	public BoardVO getContent(int num);
+	public void updateBoard(BoardVO vo);
+	public void deleteBoard(int num);
+	 -->
+	 <!-- 
+	 	id = "매퍼 인터페이스에 기술된 메서드 이름"
+	 	resultType = "select의 결과를 특정 객체로 만들어서 반환"
+	 	** VO에 기술된 멤버변수는 DB의 컬럼명과 정확히 일치해야 하며, 전체 경로를 적는다 !!! **
+	  -->
+	
+<mapper namespace="com.zerock.board.mapper.BoardMapper">
+	<insert id="insertBoard">
+		INSERT INTO tbl_board(title, content, writer) VALUES (#{title}, #{content}, #{writer})
+	</insert>
+	<select id="getList" resultType="com.zerock.board.command.BoardVO">
+		SELECT * FROM tbl_board ORDER BY num DESC
+	</select> 
+	<select id="getContent" resultType="com.zerock.board.command.BoardVO">
+		SELECT * FROM tbl_board WHERE num = #{num}
+	</select>
+	<update id="updateBoard" parameterType="com.zerock.board.command.BoardVO">
+		UPDATE tbl_board SET title = #{title}, content = #{content}, writer = #{writer} WHERE num = #{num} 
+	</update>
+	<delete id="deleteBoard">
+		DELETE FROM tbl_board WHERE num = #{num}
+	</delete>
+
+</mapper>
