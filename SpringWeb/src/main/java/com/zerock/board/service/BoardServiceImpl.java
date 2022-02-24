@@ -33,19 +33,19 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public BoardVO getContent(String num) {
+	public BoardVO getContent(int num) {
 		BoardVO vo = mapper.getContent(num);
 		return vo;
 	}
 
 	@Override
 	public void update(BoardVO vo) {
-
+		mapper.updateBoard(vo);
 	}
 
 	@Override
 	public void delete(int num) {
-
+		mapper.deleteBoard(num);
 	}
 
 	

@@ -23,11 +23,11 @@
 	<select id="getList" resultType="com.zerock.board.command.BoardVO">
 		SELECT * FROM tbl_board ORDER BY num DESC
 	</select> 
-	<select id="getContent" resultType="com.zerock.board.command.BoardVO">
+	<select id="getContent" parameterType="int" resultType="com.zerock.board.command.BoardVO">
 		SELECT * FROM tbl_board WHERE num = #{num}
 	</select>
 	<update id="updateBoard" parameterType="com.zerock.board.command.BoardVO">
-		UPDATE tbl_board SET title = #{title}, content = #{content}, writer = #{writer} WHERE num = #{num} 
+		UPDATE tbl_board SET title = #{title}, content = #{content}, writer = #{writer}, updatedate = SYSDATE WHERE num = #{num} 
 	</update>
 	<delete id="deleteBoard">
 		DELETE FROM tbl_board WHERE num = #{num}

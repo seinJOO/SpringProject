@@ -23,7 +23,7 @@ public class DBconnect {
 	DataSource dataSource;
 	
 	@Test
-	public void testConnection() {	
+	public void testConnection() {
 		
 		try {
 			System.out.println("jdbc템플릿 확인 : " + jdbcTemplete);

@@ -21,9 +21,9 @@ public class mybatisInsert {
 	@Test
 	public void insert() {
 		Map<String, String> map = new HashMap<String, String>();
-		map.put("title", "제목");
-		map.put("content", "내용");
-		map.put("writer", "작성자");
+		map.put("title", "JUnit테스트 제목");
+		map.put("content", "JUnit테스트 내용");
+		map.put("writer", "JUnit테스트 작성자");
 		boolean result = mapper.insertBoard(map);
 		System.out.println("insert 메서드 결과 : " + result);		
 		

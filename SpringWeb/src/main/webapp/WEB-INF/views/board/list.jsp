@@ -45,13 +45,13 @@
 						<c:forEach var="list" items="${list }" varStatus="num">
 							<tr>
 								<td>${num.index + 1 }</td>
-								<td><a href="board/viewContent?num=${list.num }">${list.title }</a></td>
+								<td><a href="viewContent?num=${list.num }&&bNum=${num.index+1}">${list.title }</a></td>
 								<td>${list.writer }</td>
 								<td>
 									<f:formatDate value="${list.regdate }" pattern="yyyy-MM-dd"/> 
 								</td>
 								<td>
-									<f:formatDate value="${list.updatedate }" pattern="yyyy-MM-dd hh:mm:ss"/> 
+									<f:formatDate value="${list.updatedate }" pattern="yyyy-MM-dd HH:mm:ss"/> 
 								</td>
 							</tr>
 						</c:forEach>							

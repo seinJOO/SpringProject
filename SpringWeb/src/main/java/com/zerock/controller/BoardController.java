@@ -54,10 +54,34 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/viewContent")
-	public String boardContent(@RequestParam("num") String num, Model model) { 
+	public String boardContent(@RequestParam("num") int num, @RequestParam("bNum") String bnum, Model model) { 
 		BoardVO vo = service.getContent(num);
+		model.addAttribute("board",bnum);
 		model.addAttribute("vo",vo);
 		return "board/content";
+	}	
+	
+
+	@RequestMapping("/modify")
+	public String modify(@RequestParam("num") int num, @RequestParam("bNum") String bnum, Model model) {
+		BoardVO vo = service.getContent(num);
+		model.addAttribute("vo",vo);
+		model.addAttribute("board",bnum);
+		return "board/modify";
+	}
+
+	@RequestMapping("/modifyForm")
+	public String modifyForm(@RequestParam("bNum") String bnum, BoardVO vo, Model model) {
+		service.update(vo);
+		model.addAttribute("vo",vo);
+		model.addAttribute("board",bnum);
+		return "board/content";
+	}
+	
+	@RequestMapping("/contentDelete")
+	public String contentDelete(@RequestParam("num") int num) {
+		service.delete(num);
+		return "redirect:/board/list";
 	}
 	
 	

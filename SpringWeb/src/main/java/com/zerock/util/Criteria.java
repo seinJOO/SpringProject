@@ -2,30 +2,30 @@ package com.zerock.util;
 
 public class Criteria {
 	
-	private int pageNum;
+	private int nowPage;
 	private int count;
 	
 	public Criteria() {
-		this.pageNum = 1;
+		this.nowPage = 1;
 		this.count = 5;
 	}
 
-	public Criteria(int pageNum, int count) {
+	public Criteria(int nowPage, int count) {
 		super();
-		this.pageNum = pageNum;
+		this.nowPage = nowPage;
 		this.count = count;
 	}
 	
 	public int getPageStart() {
-		return (pageNum - 1) * count;
+		return (nowPage - 1) * count;
 	}
 
 	public int getPageNum() {
-		return pageNum;
+		return nowPage;
 	}
 
 	public void setPageNum(int pageNum) {
-		this.pageNum = pageNum;
+		this.nowPage = pageNum;
 	}
 
 	public int getCount() {

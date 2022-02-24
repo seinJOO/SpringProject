@@ -25,32 +25,31 @@
 
 
 
-        <form role="form" action="##############" method="post">
+        <form role="form" action="modifyForm" method="post">
           
           <div class="form-group">
             <label>번호</label>
-            <input class="form-control" name='##############'>
+            <input class="form-control" name='bNum' value="${board }" readonly>
           </div>
           
           <div class="form-group">
             <label>제목</label>
-            <input class="form-control" name='##############'>
+            <input class="form-control" name='title' value="${vo.title }">
           </div>
 
           <div class="form-group">
             <label>내용</label>
-            <textarea class="form-control" rows="5" name='##############'></textarea>
+            <textarea class="form-control" rows="5" name='content'>${vo.content }</textarea>
           </div>
 
           <div class="form-group">
             <label>작성자</label>
-            <input class="form-control" name='##############'>
-          </div>
+            <input class="form-control" name='writer' value="${vo.writer }">
+          </div>         
           
-          
-          
+          <input type="hidden" name="num" value="${vo.num }">
           <button type="submit" class="btn btn-primary">변경</button>
-          <button type="button" class="btn btn-secondary">삭제</button>
+          <button type="button" class="btn btn-secondary" onclick="location.href='contentDelete?num=${vo.num}'">삭제</button>
           <button type="button" class="btn btn-dark">목록</button>
         </form>
 
