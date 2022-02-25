@@ -20,9 +20,15 @@
 	<insert id="insertBoard">
 		INSERT INTO tbl_board(title, content, writer) VALUES (#{title}, #{content}, #{writer})
 	</insert>
+	
 	<select id="getList" resultType="com.zerock.board.command.BoardVO">
 		SELECT * FROM tbl_board ORDER BY num DESC
 	</select> 
+	
+	<select id="pagingList" parameterType="com.zerock.board.command.Criteria" resultType="com.zerock.board.command.BoardVO">
+		SELECT * FROM (SELECT rownum R, B.* FROM (SELECT * FROM tbl_board ORDER BY num DESC) B WHERE #{count} >= rownum) WHERE R >= #{pageStart} order by R
+	</select>	
+	
 	<select id="getContent" parameterType="int" resultType="com.zerock.board.command.BoardVO">
 		SELECT * FROM tbl_board WHERE num = #{num}
 	</select>
@@ -32,5 +38,10 @@
 	<delete id="deleteBoard">
 		DELETE FROM tbl_board WHERE num = #{num}
 	</delete>
+	<select id="getTotal" resultType="int">
+		SELECT COUNT(*) FROM tbl_board
+	</select>
+	
 
+	
 </mapper>

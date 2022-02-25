@@ -22,14 +22,12 @@
     <div class="card">
       <div class="card-header bg-primary text-white">수정 페이지</div>
       <div class="card-body">
-
-
-
-        <form role="form" action="modifyForm" method="post">
-          
+      
+        <form role="form" name="modiForm" id="modiForm" action="modifyForm" method="post">  
+                
           <div class="form-group">
             <label>번호</label>
-            <input class="form-control" name='bNum' value="${board }" readonly>
+            <input class="form-control" name='index' value="${index }" readonly>
           </div>
           
           <div class="form-group">
@@ -47,14 +45,14 @@
             <input class="form-control" name='writer' value="${vo.writer }">
           </div>         
           
-          <input type="hidden" name="num" value="${vo.num }">
-          <button type="submit" class="btn btn-primary">변경</button>
-          <button type="button" class="btn btn-secondary" onclick="location.href='contentDelete?num=${vo.num}'">삭제</button>
-          <button type="button" class="btn btn-dark">목록</button>
+          <input type="hidden" name='num' value="${vo.num }">
+          <input type="hidden" name='pageNum' value="${cri.pageNum }">
+          <button type="button" class="btn btn-primary" onclick="modifyCheck('modify')">변경</button>
+          <button type="button" class="btn btn-secondary" onclick="modifyCheck('delete')">삭제</button>
+          <button type="button" class="btn btn-dark" onclick="modifyCheck('list')">목록</button>
+          <%-- <button type="button" class="btn btn-secondary" onclick="location.href='contentDelete?num=${vo.num}'">삭제</button>
+          <button type="button" class="btn btn-dark" onclick="location.href='list?pageNum=${cri.pageNum}&&count=${cri.count }'">목록</button> --%>
         </form>
-
-
-
       </div>
       <!--  end card-body -->
     </div>
@@ -62,8 +60,40 @@
   </div>
   <!-- end card -->
 </div>
-<!-- /.row -->
-
+<!-- /.row -->        
+	
 <%@ include file="../include/footer.jsp" %>
+	<script type="text/javascript">
+			function modifyCheck(e) {
+				// $("#아이디")는 HTML의 아이디 속성에 한 번에 접근할 수 있음
+				// attr(속성, 변경할 값) 함수는 태그 내부속성을 변경하는 함수
+				
+				if (e == 'modify') {
+					if (document.modiForm.title.value == '') {
+						alert("제목을 입력해주세요!");
+						return;
+					} else if (document.modiForm.content.value == '') {
+						alert("내용을 입력해주세요!");
+						return;
+					} else if (document.modiForm.writer.value == '') {
+						alert("작성자를 입력해주세요!");
+						return;
+					} else if (confirm("게시물을 변경하시겠습니까?")) {
+						document.modiForm.submit();
+					}
+					
+				} else if (e == 'delete') {
+					if (confirm("진짜 정말로 삭제하시겠습니까?")) {
+						<% System.out.println("삭제중========================");%>
+						$("#modiForm").attr("action","contentDelete");
+						$("#modiForm").submit();
+						
+					}
+				} else if (e == 'list') {
+					$("#modiForm").attr("action","list");
+					$("#modiForm").submit();
+				}	
+			}
+		</script>
 </body>
 </html>

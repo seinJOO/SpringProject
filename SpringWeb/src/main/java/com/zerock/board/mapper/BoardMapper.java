@@ -1,10 +1,9 @@
 package com.zerock.board.mapper;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import com.zerock.board.command.BoardVO;
-import com.zerock.util.PageVO;
+import com.zerock.board.command.Criteria;
 
 public interface BoardMapper {
 	
@@ -13,5 +12,9 @@ public interface BoardMapper {
 	public BoardVO getContent(int num);
 	public void updateBoard(BoardVO vo);
 	public void deleteBoard(int num);
+	public int getTotal();
+	
+	// 페이징 쿼리
+	public ArrayList<BoardVO> pagingList(Criteria cri);
 
 }
