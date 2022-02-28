@@ -47,7 +47,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="">
+        <a class="nav-link" href="${pageContext.request.contextPath}/session/mainPage">
           <!--
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <i class="fas fa-fw fa-cog"></i>
@@ -58,15 +58,15 @@
       </li>
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="############################" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-fw fa-folder"></i>
           <span>내 정보</span>
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Login</h6>
-            <a class="collapse-item" href="############################">회원가입</a>
-            <a class="collapse-item" href="############################">로그인</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/member/join">회원가입</a>
+            <a class="collapse-item" href="${pageContext.request.contextPath}/member/login">로그인</a>
             
           </div>
         </div>

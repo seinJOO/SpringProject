@@ -39,7 +39,6 @@ public class BoardController {
 	@RequestMapping(value="/register", method=RequestMethod.GET)
 	public String register(Criteria cri, Model model) {
 		model.addAttribute("cri", cri);
-		System.out.println("페이지넘버=======" + cri.getPageNum());
 		return "board/register";
 	}
 	
