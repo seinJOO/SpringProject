@@ -55,6 +55,7 @@
 	
 <!-- 	MyBatis의 생성한 매퍼 패키지를 스캔하는 태그 -->
 	<mybatis-spring:scan base-package="com.zerock.board.mapper"/>
+	<mybatis-spring:scan base-package="com.zerock.member.mapper"/>
 
 	
 </beans>

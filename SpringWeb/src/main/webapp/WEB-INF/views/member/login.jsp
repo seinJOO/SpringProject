@@ -75,7 +75,17 @@
     </div>
 
   </div>
-  
+  <script>
+	$(document).ready(
+	function() {
+		var msg = '${msg}';
+		
+		if (msg != '') {
+			alert('${msg}');
+		}		
+	}
+	)
+	</script>
 
   <!-- Bootstrap core JavaScript-->
   <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>

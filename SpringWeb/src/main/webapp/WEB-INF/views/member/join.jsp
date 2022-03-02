@@ -88,18 +88,56 @@
     </div>
 
   </div>
-  
+  <script>
+   function IdCheck() {
+	   alert("사용가능한 아이디입니다.");
+	   $("#id").attr("readonly", true);
+   }
+   
+    //회원가입 체크
+   function joinCheck() {
+    	//attr(속성, 변경할 값) 함수는 해당 ID태그의 내부속성을 변경하는 함수
+    	//attr(속성) 함수의 매개값이 하나라면 해당 속성여부를 확인
+    	//val() 함수는 해당 ID태그의 값을 확인
+    	//focus() 함수는 해당 ID태그의 마우스 커서를 위치시킨다. 
+    	//submit() 함수는 해당 ID태그의 form을 서밋 처리
+    	if ( !$("#id").attr("readonly")) {
+    		alert("아이디 중복체크를 해야 합니다.");
+    	}else if( $("#name").val().length < 1 ) {
+    		alert("이름을 입력하세요");
+    	}else if( $("#pw").val().length < 1 ) {
+    		alert("비밀번호를 입력하세요");
+    	}else if ( $("#pw").val() != $("#pwCheck").val() ) {
+    		alert("비밀번호 확인란을 확인해주세요");
+    		$("#pwCheck").focus();
+    	}else if ( confirm("회원 가입 하시겠습니까?")){
+    		$("#regForm").submit();
+    	}
+    }
+   
+   </script>
+   
+   <script>
+	$(document).ready(
+	function() {
+		var msg = '${msg}';
+		
+		if (msg != '') {
+			alert('${msg}');
+		}		
+	}
+	)
+	</script>
+
   <!-- Bootstrap core JavaScript-->
   <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
-  
-  <%--
-  <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<%--   <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- Core plugin JavaScript-->
   <script src="${pageContext.request.contextPath}/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
   <script src="${pageContext.request.contextPath}/resources/js/sb-admin-2.min.js"></script>
-   --%>
+  --%>
 </body>
 
 </html>

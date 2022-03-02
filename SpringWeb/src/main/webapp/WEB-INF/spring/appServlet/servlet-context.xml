@@ -21,18 +21,9 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<interceptors>
-	<!-- myPage, updatePage로 매핑된 컨트롤러 실행 전에 preHandle이 실행됨 -->
-		<interceptor>
-			<!-- mapping path="인터셉트할 대상" -->
-			<mapping path="/session/myPage"/>
-			<mapping path="/session/updatePage"/>
-			<beans:bean class="com.zerock.util.LoginInterceptor" />
-		</interceptor>
-	</interceptors>
-	
 	<context:component-scan base-package="com.zerock.controller" />
 	<context:component-scan base-package="com.zerock.board.service" />
+	<context:component-scan base-package="com.zerock.member.service" />
 	
 	
 	
