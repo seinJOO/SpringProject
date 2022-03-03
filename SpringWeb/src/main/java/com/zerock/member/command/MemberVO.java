@@ -2,15 +2,13 @@ package com.zerock.member.command;
 
 import java.sql.Timestamp;
 
+
 public class MemberVO {
 	
 	private String id;
 	private String pw;
 	private String name;
 	private Timestamp regdate;
-	
-	public MemberVO() {}
-	
 	public MemberVO(String id, String pw, String name) {
 		super();
 		this.id = id;
@@ -43,5 +41,5 @@ public class MemberVO {
 	}
 	
 	
-
-}
+	
+	}

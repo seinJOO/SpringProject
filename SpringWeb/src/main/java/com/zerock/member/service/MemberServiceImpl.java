@@ -30,5 +30,11 @@ public class MemberServiceImpl implements MemberService {
 			return 0;
 		} else return 1;
 	}
+
+	@Override
+	public int checkId(String id) {
+		int result = mapper.checkId(id);
+		return result;
+	}
 }
 

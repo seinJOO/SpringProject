@@ -87,11 +87,44 @@
       </div>
     </div>
 
-  </div>
+  </div>  
+  <!-- Bootstrap core JavaScript-->
+  <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
+<%--   <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Core plugin JavaScript-->
+  <script src="${pageContext.request.contextPath}/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <!-- Custom scripts for all pages-->
+  <script src="${pageContext.request.contextPath}/resources/js/sb-admin-2.min.js"></script>
+  --%>
   <script>
    function IdCheck() {
-	   alert("사용가능한 아이디입니다.");
-	   $("#id").attr("readonly", true);
+	var id = $("#id").val();   // id태그의 value에 접근
+	var userId = {"id" : id};  // 전송할 데이터의 key값
+	
+	if(id.length < 4) {
+		alert("아이디는 4글자 이상을 입력하세요");
+	} else {
+		// 먼저 ajax를 지원하는 json을 사용하기 위한 라이브러리 필요
+		//json은 {키:값}의 구조를 가지고 있는 데이터 묶음
+		$.ajax({
+			type : "post",
+			url : "checkId",
+			data : userId,		//서버에 전송할 데이터 json형식 (위에 var userId=로 정의해둠)
+			//dataType : "json",	//서버의 요청 후 리턴해주는 타입(생략가능)
+			error : function(request, error) {
+				alert(error + "\n" + request.status); //에러코드 등 출력
+			},
+			success : function(result) { 			//ajax 통신에 성공했을 때 호출됨, 
+				console.log("성공?실패?" + result);	//checkId의 결과가 result매개변수로 전달됨
+				if (result == 1) {
+					alert("이미 존재하는 아이디입니다.");
+				} else {
+			  		 alert("사용가능한 아이디입니다.");
+					 $("#id").attr("readonly", true);
+				}			
+			}
+		}) //$.ajax 동작 끝
+	}//else구문  끝
    }
    
     //회원가입 체크
@@ -129,15 +162,6 @@
 	)
 	</script>
 
-  <!-- Bootstrap core JavaScript-->
-  <script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
-<%--   <script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- Core plugin JavaScript-->
-  <script src="${pageContext.request.contextPath}/resources/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-  <!-- Custom scripts for all pages-->
-  <script src="${pageContext.request.contextPath}/resources/js/sb-admin-2.min.js"></script>
-  --%>
 </body>
 
 </html>

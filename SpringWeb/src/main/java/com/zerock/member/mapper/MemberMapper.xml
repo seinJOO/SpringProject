@@ -10,6 +10,9 @@
       VALUES(#{id}, #{pw}, #{name})
    </insert>
    <select id="login" resultType="int" parameterType="com.zerock.member.command.MemberVO">
-		SELECT COUNT(*) as result FROM tbl_member WHERE id = '${id}' AND pw = '${pw}'
+		SELECT COUNT(*) as result FROM tbl_member WHERE id = '#{id}' AND pw = '#{pw}'
+   </select>
+   <select id="checkId" resultType="int">
+   	select count(*) as result from tbl_member where id = #{id}
    </select>
 </mapper>
