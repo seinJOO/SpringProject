@@ -15,7 +15,6 @@
 	<%@include file="../include/header.jsp"%>
 
 	<!-- Begin Page Content -->
-	
 
 		<!-- Page Heading -->
 		<h1 class="h3 mb-2 text-gray-800">게시판</h1>
