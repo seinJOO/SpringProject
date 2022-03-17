@@ -11,6 +11,12 @@
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
+	<!-- 1. aop라이브러리 다운 (pom.xml)
+		 2. namespace 추가
+		 3. aop 스캔 설정 -->
+		 <context:component-scan base-package="com.zerock.util"/>
+		 <!-- aop어노테이션을 사용할 수 있게 하는 태그 -->
+		 <aop:aspectj-autoproxy />
 	<!-- 설정파일 여러개 사용하기
 	1. web.xml에 새로운 설정파일 추가
 	2. servlet-context.xml의 설정 복사하기 (생성 설정 순서 중요)
@@ -23,15 +29,7 @@
 			<mapping path="/session/updatePage"/>
 			<beans:bean class="com.zerock.util.LoginInterceptor" />
 		</interceptor>
-	</interceptors>
-	<!-- 1. aop라이브러리 다운 (pom.xml)
-		 2. namespace 추가
-		 3. aop 스캔 설정 -->
-		 <context:component-scan base-package="com.zerock.util"/>
-		 <!-- aop어노테이션을 사용할 수 있게 하는 태그 -->
-		 <aop:aspectj-autoproxy />
-		 
-	<interceptors>
+
 		<interceptor>
 			<mapping path="/board/delete"/>
 			<mapping path="/board/modify"/>
